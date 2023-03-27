@@ -7,7 +7,6 @@ const UserController = (app) => {
     app.post('/api/users', createUser)
     app.delete('/api/users/:uid', deleteUser);
     app.put('/api/users/:uid', updateUser)
-
 }
 
 const findUsers = (req, res) => {
