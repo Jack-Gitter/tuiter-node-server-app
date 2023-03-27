@@ -1,5 +1,10 @@
 import express from 'express'; 
+import HelloController from './controllers/hello-controller.js';
+import UserController from './controllers/users/users-controller.js';
+
 const app = express();
-app.get('/hello', (req, res) => {res.send('what')});
-app.get('/', (req, res) => {res.send('Welcome to Full Stack Dev!')});
+
+HelloController(app);
+UserController(app);
+
 app.listen(4000);
