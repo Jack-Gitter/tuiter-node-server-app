@@ -4,6 +4,13 @@ const createTuit = async (req, res) => {
   const newTuit = req.body;
   newTuit.likes = 0;
   newTuit.liked = false;
+  newTuit.dislikes = 0;
+  newTuit.disliked = false;
+  newTuit.handle = "@nasa";
+  newTuit.time = "now";
+  newTuit.userName = "nasa space";
+  newTuit.title = "something by nasa";
+  newTuit.image = "../../../tuiter/explore/spacex.jpeg"
   const insertedtuit = await tuitsDao.createTuit(newTuit);
   res.json(insertedtuit)
 }
@@ -15,11 +22,11 @@ const findTuits = async (req, res) => {
 
 const updateTuit = async (req, res) => {
   const tuitIdToUpdate = req.params.tid;
-  const status = await tuitsDao.deleteTuit(tuitIdToUpdate);
+  const updates = req.body; 
+  const status = await tuitsDao.updateTuit(tuitIdToUpdate, updates);
   res.json(status);
 }
   
-
 const deleteTuit = async (req, res) => {
   const tuitIdToDelete = req.params.tid;
   const status = await tuitsDao.deleteTuit(tuitIdToDelete);
